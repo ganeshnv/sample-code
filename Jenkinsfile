@@ -11,20 +11,23 @@ pipeline {
         steps {
            sh 'mvn clean compile'
         }
+     }
      stage('Test') {
         steps {
            sh mvn test
            junit '**/target/surefire-reports/TEST-*.xml'
         }
+     }
      stage('Package') {
         steps {
            sh 'mvn package'
         }  
-       
-      post {
-     always {
+     } 
+    post {
+    always {
        mail to: "nv.ganesh93@gmail.com" ,
        body: "Build status ${env.BUILD_URL}",
        subject: "Pilepile Job: ${currentBuild.fullDisplsyName}"
      }
    }
+}
