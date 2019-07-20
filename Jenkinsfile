@@ -6,7 +6,7 @@ pipeline {
     #     steps {
     #     git 'https://github.com/ganeshnv/sample-code.git'
     #    }
-    #  }
+    # }
     
      stage('Build') {
         steps {
